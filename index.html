@@ -14,21 +14,83 @@
     </header>
 
     <main>
+
         <section class="profile">
             <img src="./image/avatar.png" alt="аватар" class="profile__avatar">
             <div class="profile__info">
-                <h1 class="profile__title">Жак-Ив Кусто</h1>
+                <div class="profile__container">
+                    <h1 class="profile__title">Жак-Ив Кусто</h1>
+                    <button type="button" class="profile__edit-button"></button>
+                </div>
                 <h2 class="profile__subtitle">Исследователь океана</h2>
             </div>
-            <div class="profile__add-button">
-                <img src="./image/addButton.svg" alt="кнопка">
+            <button class="profile__add-button" type="button"></button>
+        </section>
+
+        <section class="elements">
+            <div class="element">
+                <img class="element__image" src="./image/element/karachaevsk.jpg" alt="Карачаевск">
+                <div class="element__container">
+                    <h2 class="element__title">Карачаевск</h2>
+                    <button class="element__like-button" type="button"></button>
+                </div>
+            </div>
+            <div class="element">
+                <img class="element__image" src="./image/element/elbrus.jpg" alt="эльбрус">
+                <div class="element__container">
+                    <h2 class="element__title">Гора Эльбрус</h2>
+                    <button class="element__like-button" type="button"></button>
+                </div>
+            </div>
+            <div class="element">
+                <img class="element__image" src="./image/element/dombai.jpg" alt="Домбай">
+                <div class="element__container">
+                    <h2 class="element__title">Домбай</h2>
+                    <button class="element__like-button" type="button"></button>
+                </div>
+            </div>
+            <div class="element">
+                <img class="element__image" src="./image/element/elbrus.jpg" alt="эльбрус">
+                <div class="element__container">
+                    <h2 class="element__title">Гора Эльбрус</h2>
+                    <button class="element__like-button" type="button"></button>
+                </div>
+            </div>
+            <div class="element">
+                <img class="element__image" src="./image/element/dombai.jpg" alt="Домбай">
+                <div class="element__container">
+                    <h2 class="element__title">Домбай</h2>
+                    <button class="element__like-button" type="button"></button>
+                </div>
+            </div>
+            <div class="element">
+                <img class="element__image" src="./image/element/karachaevsk.jpg" alt="Карачаевск">
+                <div class="element__container">
+                    <h2 class="element__title">Карачаевск</h2>
+                    <button class="element__like-button" type="button"></button>
+                </div>
             </div>
         </section>
     </main>
 
     <footer class="footer">
-
+        <p class="footer__copyrights">© 2022 Mesto Russia</p>
     </footer>
 
+    <section class="modal">
+        <div class="modal__content">
+            <button class="modal__close"></button>
+            <form class="modal__form">
+                <h2 class="modal__title">Редактировать профиль</h2>
+                <div class="modal__inputs">
+                    <input class="modal__input modal__input_name" placeholder="Имя" type="text">
+                    <input class="modal__input modal__input_profession" placeholder="Профессия" type="text" value="">
+                </div>
+                <button class="modal__save" type="submit">Сохранить</button>
+            </form>
+        </div>
+    </section>
+
+<script src="./scripts/script.js"></script>
 </body>
 </html>

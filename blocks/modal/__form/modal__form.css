@@ -1,0 +1,15 @@
+.modal__form {
+    display: flex;
+    flex-direction: column;
+    margin: 35px;
+    height: 260px;
+    width: 360px;
+}
+
+@media screen and (max-width: 550px) {
+    .modal__form {
+        margin: 25px 22px;
+        width: 238px;
+        height: 272px;
+    }
+}

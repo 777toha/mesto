@@ -1,0 +1,11 @@
+.modal__inputs {
+    display: flex;
+    flex-direction: column;
+    margin: 54px 0 48px;
+}
+
+@media screen and (max-width: 550px) {
+    .modal__inputs {
+        margin: 75px 0 45px;
+    }
+}
