@@ -1,4 +1,4 @@
-.modal__close {
+.popup__close {
     position: absolute;
     top: -40px;
     right: -40px;
@@ -13,13 +13,13 @@
     translate: opacity .3 ease;
 }
 
-.modal__close:hover {
+.popup__close:hover {
     opacity: 0.6;
 }
 
 
 @media screen and (max-width: 550px) {
-    .modal__close {
+    .popup__close {
         width: 20px;
         height: 20px;
         top: -36px;

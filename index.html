@@ -77,20 +77,18 @@
         <p class="footer__copyrights">© 2022 Mesto Russia</p>
     </footer>
 
-    <section class="modal">
-        <div class="modal__content">
-            <button class="modal__close"></button>
-            <form class="modal__form">
-                <h2 class="modal__title">Редактировать профиль</h2>
-                <div class="modal__inputs">
-                    <input class="modal__input modal__input_name" placeholder="Имя" type="text">
-                    <input class="modal__input modal__input_profession" placeholder="Профессия" type="text" value="">
-                </div>
-                <button class="modal__save" type="submit">Сохранить</button>
+    <section class="popup">
+        <div class="popup__content">
+            <button class="popup__close" type="button"></button>
+            <h2 class="popup__title">Редактировать профиль</h2>
+            <form class="popup__form" name="popupForm" action="">
+                <input class="popup__input popup__input_data_name" placeholder="Имя" type="text" name="name">
+                <input class="popup__input popup__input_data_profession" placeholder="Профессия" type="text" value="" name="job">
+                <button class="popup__save" type="submit">Сохранить</button>
             </form>
         </div>
     </section>
 
-<script src="./scripts/script.js"></script>
+<script src="./scripts/index.js"></script>
 </body>
 </html>

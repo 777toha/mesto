@@ -1,13 +1,13 @@
-.modal__content {
+.popup__content {
     background-color: #fff;
     width: 430px;
     height: 330px;
     border-radius: 10px;
-    position: relative;
+    position: relative;  
 }
 
 @media screen and (max-width: 550px) {
-    .modal__content {
+    .popup__content {
         width: 282px;
         height: 322px;
     }
