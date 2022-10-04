@@ -12,6 +12,7 @@
         max-width: 100%;
         flex-direction: column;
         justify-content: center;
+        max-height: 286px;
     }
     
 }

@@ -10,6 +10,8 @@ const jobInput = formElement.querySelector(".popup__input_data_profession");
 
 function popupOpen() {
     modal.classList.add("popup_opened");
+    nameInput.value = nameOut.textContent;
+    jobInput.value = jobOut.textContent;
 };
 
 function popupClose(e) {
@@ -25,15 +27,6 @@ function formSubmitHandler (evt) {
     popupClose(modal);
 };
 
-// const likeActive = Array.from(document.querySelectorAll(".element__like-button"));
-//     likeActive.forEach((button, index) => {
-//         button.addEventListener('click', () => {
-//             button.classList.toggle("element__like-button_active"); 
-//         });
-// });
-
-nameInput.value = nameOut.textContent;
-jobInput.value = jobOut.textContent;
 modalEditOpen.addEventListener('click', popupOpen);
 modal.addEventListener('click', popupClose);
-// formElement.addEventListener('submit', formSubmitHandler);
+formElement.addEventListener('submit', formSubmitHandler);
