@@ -130,9 +130,9 @@ const handleFormSubmit = (evt) => {
     const newPlaceName = placeName.value;
     const newPlaceUrl = placeUrl.value;
 
-    const NewAddElement = addElement({name: newPlaceName, link: newPlaceUrl});
+    addElement({name: newPlaceName, link: newPlaceUrl});
 
-    elements.append(NewAddElement);   
+    elements.append(addElement); 
 
     placeName.value = '';
     placeUrl.value = '';
