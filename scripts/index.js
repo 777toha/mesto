@@ -1,7 +1,6 @@
 const popupAll = document.querySelector(".popup");
 const modalEditOpen = document.querySelector(".profile__edit-button");
 const popupProfile = document.querySelector(".popup_profile");
-const popupContainer = document.querySelector(".popup__container");
 const popupCloseBtnProfile = popupProfile.querySelector(".popup__close");
 const nameOut = document.querySelector(".profile__title");
 const jobOut = document.querySelector(".profile__subtitle");
@@ -61,9 +60,10 @@ const handleEscKeyDown = (e) => {
 
 function openGeneralPopup(popup) {
     popup.classList.add("popup_opened");
-
+    const popupOverlay = popup.querySelector(".popup__overlay");
     popup.addEventListener('click', (evt) => {
-      if (!popupContainer.contains(evt.target)) {
+      if (!popupOverlay.contains(evt.target)) {
+      evt.stopPropagation();
       closeGeneralPopup(popup);
       }
     });
