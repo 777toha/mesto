@@ -41,10 +41,14 @@
             <button class="popup__close" type="button"></button>
             <h2 class="popup__title">Редактировать профиль</h2>
             <form class="popup__form" name="popupForm" novalidate>
-                <input class="popup__input popup__input_data_name" placeholder="Имя" type="text" id="profile__inputName" minlength="2" maxlength="40" pattern="^[a-zA-Zа-яА-я-\s]+$" required>
-                <span class="popup__input-error profile__inputName-error"></span>
-                <input class="popup__input popup__input_data_profession" placeholder="Профессия" type="text" value="" id="profile__inputProfession" minlength="2" maxlength="200" pattern="^[a-zA-Zа-яА-я-\s]+$" required>
-                <span class="popup__input-error profile__inputProfession-error"></span>
+                <input class="popup__input popup__input_data_name" placeholder="Имя" type="text" 
+                id="profile__input_name" minlength="2" maxlength="40" 
+                pattern="^[a-zA-Zа-яА-я-\s]+$" required>
+                <span class="popup__input-error profile__input_name-error"></span>
+                <input class="popup__input popup__input_data_profession" placeholder="Профессия" 
+                type="text" value="" id="profile__input_profession" minlength="2" maxlength="200" 
+                pattern="^[a-zA-Zа-яА-я-\s]+$" required>
+                <span class="popup__input-error profile__input_profession-error"></span>
                 <button class="popup__save" type="submit">Сохранить</button>
             </form>
         </div>
@@ -55,10 +59,14 @@
             <button class="popup__close" type="button"></button>
             <h2 class="popup__title">Новое место</h2>
             <form class="popup__form" name="popupForm" novalidate>
-                <input class="popup__input popup__input_data_name" placeholder="Название" type="text" name="name" id="card-add__inputName" minlength="2" maxlength="30" pattern="^[a-zA-Zа-яА-я-\s]+$" required>
-                <span class="popup__input-error card-add__inputName-error"></span>
-                <input class="popup__input popup__input_data_profession" placeholder="Ссылка на картинку" type="url" value="" name="url" id="card-add__inputUrl" required>
-                <span class="popup__input-error card-add__inputUrl-error"></span>
+                <input class="popup__input popup__input_data_name" placeholder="Название" 
+                type="text" name="name" id="card-add__input_name" minlength="2" maxlength="30" 
+                pattern="^[a-zA-Zа-яА-я-\s]+$" required>
+                <span class="popup__input-error card-add__input_name-error"></span>
+                <input class="popup__input popup__input_data_profession" 
+                placeholder="Ссылка на картинку" type="url" value="" name="url" 
+                id="card-add__input_url" required>
+                <span class="popup__input-error card-add__input_url-error"></span>
                 <button class="popup__save" type="submit">Сохранить</button>
             </form>
         </div>
