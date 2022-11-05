@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./pages/index.css">
     <script defer src="./scripts/index.js"></script>
+    <script defer src="./scripts/validate.js"></script>
     <title>Mesto</title>
 </head>
 <body class="page">
@@ -39,9 +40,11 @@
         <div class="popup__container">
             <button class="popup__close" type="button"></button>
             <h2 class="popup__title">Редактировать профиль</h2>
-            <form class="popup__form" name="popupForm">
-                <input class="popup__input popup__input_data_name" placeholder="Имя" type="text" name="name">
-                <input class="popup__input popup__input_data_profession" placeholder="Профессия" type="text" value="" name="job">
+            <form class="popup__form" name="popupForm" novalidate>
+                <input class="popup__input popup__input_data_name" placeholder="Имя" type="text" id="profile__inputName" minlength="2" maxlength="40" pattern="^[a-zA-Zа-яА-я-\s]+$" required>
+                <span class="popup__input-error profile__inputName-error"></span>
+                <input class="popup__input popup__input_data_profession" placeholder="Профессия" type="text" value="" id="profile__inputProfession" minlength="2" maxlength="200" pattern="^[a-zA-Zа-яА-я-\s]+$" required>
+                <span class="popup__input-error profile__inputProfession-error"></span>
                 <button class="popup__save" type="submit">Сохранить</button>
             </form>
         </div>
@@ -51,9 +54,11 @@
         <div class="popup__container popup__container_card-add">
             <button class="popup__close" type="button"></button>
             <h2 class="popup__title">Новое место</h2>
-            <form class="popup__form" name="popupForm">
-                <input class="popup__input popup__input_data_name" placeholder="Название" type="text" name="name">
-                <input class="popup__input popup__input_data_profession" placeholder="Ссылка на картинку" type="text" value="" name="job">
+            <form class="popup__form" name="popupForm" novalidate>
+                <input class="popup__input popup__input_data_name" placeholder="Название" type="text" name="name" id="card-add__inputName" minlength="2" maxlength="30" pattern="^[a-zA-Zа-яА-я-\s]+$" required>
+                <span class="popup__input-error card-add__inputName-error"></span>
+                <input class="popup__input popup__input_data_profession" placeholder="Ссылка на картинку" type="url" value="" name="url" id="card-add__inputUrl" required>
+                <span class="popup__input-error card-add__inputUrl-error"></span>
                 <button class="popup__save" type="submit">Сохранить</button>
             </form>
         </div>
