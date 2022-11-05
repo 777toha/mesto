@@ -11,7 +11,7 @@ const hideInputError = (errorElement, inputElement, inputErrorClass, errorClass)
 }
 
 const handleFormInput = (formElement, inputElement, inputErrorClass, errorClass) => {
-    const errorElement = formElement.querySelector(`.${inputElement.id}_error`);
+    const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
     if (!inputElement.validity.valid) {
         showInputError(errorElement, inputElement, inputElement.validationMessage, inputErrorClass, errorClass);
     } else {
