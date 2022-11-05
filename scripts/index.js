@@ -1,7 +1,8 @@
+const popupAll = document.querySelector(".popup");
 const modalEditOpen = document.querySelector(".profile__edit-button");
 const popupProfile = document.querySelector(".popup_profile");
+const popupContainer = document.querySelector(".popup__container");
 const popupCloseBtnProfile = popupProfile.querySelector(".popup__close");
-const popupContent = document.querySelector(".popup__container");
 const nameOut = document.querySelector(".profile__title");
 const jobOut = document.querySelector(".profile__subtitle");
 const popupForm = document.querySelector(".popup__form");
@@ -51,8 +52,23 @@ const initialCards = [
   }
 ];
 
+const handleEscKeyDown = (e) => {
+  const OpenPopupWindowe = document.querySelector('.popup_opened');
+  if (e.key === 'Escape') {
+    closeGeneralPopup(OpenPopupWindowe);
+  }
+};
+
 function openGeneralPopup(popup) {
     popup.classList.add("popup_opened");
+
+    popup.addEventListener('click', (evt) => {
+      if (!popupContainer.contains(evt.target)) {
+      closeGeneralPopup(popup);
+      }
+    });
+
+    document.addEventListener('keydown', handleEscKeyDown);
 };
 
 function closeGeneralPopup(popup) {
