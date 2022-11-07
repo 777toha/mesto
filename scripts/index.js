@@ -60,14 +60,12 @@ const handleEscKeyDown = (e) => {
 };
 
 function openGeneralPopup(popup) {
-    nameInput.value = nameOut.textContent;
-    jobInput.value = jobOut.textContent;
     popup.classList.add("popup_opened");
 
-    popup.addEventListener('click', (evt) => {
+    popup.addEventListener('click', function handleOverlayClose(evt) {
       if (evt.target.classList.contains('popup')) {
-      closeGeneralPopup(popup);
-      }
+        closeGeneralPopup(popup);
+        }
     });
 
     document.addEventListener('keydown', handleEscKeyDown);
@@ -76,10 +74,10 @@ function openGeneralPopup(popup) {
 function closeGeneralPopup(popup) {
     popup.classList.remove("popup_opened");
 
-    popup.removeEventListener('click', (evt) => {
+    popup.addEventListener('click', function handleOverlayClose(evt) {
       if (evt.target.classList.contains('popup')) {
-      closeGeneralPopup(popup);
-      }
+        closeGeneralPopup(popup);
+        }
     });
 
     document.removeEventListener('keydown', handleEscKeyDown);
@@ -144,7 +142,16 @@ function addNewElement(evt) {
     closeGeneralPopup(popupAddCard);
 };
 
-modalEditOpen.addEventListener('click',() => openGeneralPopup(popupProfile));
+function addTextProfile() { 
+  nameInput.value = nameOut.textContent;
+  jobInput.value = jobOut.textContent;
+  // openGeneralPopup(popup)
+  }
+
+modalEditOpen.addEventListener('click',() => {
+  addTextProfile();
+  openGeneralPopup(popupProfile);
+});
 popupCloseBtnProfile.addEventListener('click', () => closeGeneralPopup(popupProfile));
 popupForm.addEventListener('submit', handleProfileFormSubmit);
 formSubmitAddCard.addEventListener('submit', addNewElement);

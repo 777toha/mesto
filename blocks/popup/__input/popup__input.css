@@ -9,9 +9,3 @@
     line-height: 17px;
     font-weight: 400;
 }
-
-@media screen and (max-width: 650px) {
-    .popup__input:last-of-type {
-        margin-bottom: 44px;
-    } 
-}
