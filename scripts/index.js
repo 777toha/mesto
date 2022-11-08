@@ -61,8 +61,7 @@ const handleEscKeyDown = (e) => {
 
 function handleOverlayClose(evt) {
   if (evt.target.classList.contains('popup')) {
-    const openPopupWindowe = document.querySelector('.popup_opened');
-    closeGeneralPopup(openPopupWindowe);
+    closeGeneralPopup(evt.target);
     }
 };
 
