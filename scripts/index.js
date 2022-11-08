@@ -59,14 +59,17 @@ const handleEscKeyDown = (e) => {
   }
 };
 
+function handleOverlayClose(evt) {
+  if (evt.target.classList.contains('popup')) {
+    const openPopupWindowe = document.querySelector('.popup_opened');
+    closeGeneralPopup(openPopupWindowe);
+    }
+};
+
 function openGeneralPopup(popup) {
     popup.classList.add("popup_opened");
 
-    popup.addEventListener('click', function handleOverlayClose(evt) {
-      if (evt.target.classList.contains('popup')) {
-        closeGeneralPopup(popup);
-        }
-    });
+    popup.addEventListener('mousedown', handleOverlayClose);
 
     document.addEventListener('keydown', handleEscKeyDown);
 };
@@ -74,11 +77,7 @@ function openGeneralPopup(popup) {
 function closeGeneralPopup(popup) {
     popup.classList.remove("popup_opened");
 
-    popup.addEventListener('click', function handleOverlayClose(evt) {
-      if (evt.target.classList.contains('popup')) {
-        closeGeneralPopup(popup);
-        }
-    });
+    popup.addEventListener('mousedown', handleOverlayClose);
 
     document.removeEventListener('keydown', handleEscKeyDown);
 };
