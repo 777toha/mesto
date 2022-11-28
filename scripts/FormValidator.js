@@ -11,33 +11,34 @@ export class FormValidator {
         this._inputList = Array.from(formElement.querySelectorAll(this._inputSelector));
     }
 
-    _showInputError(errorElement, inputElement, errorMessage) {
+    _showInputError(inputElement, errorMessage) {
+        this._errorElement = this._formElement.querySelector(`.${inputElement.id}-error`);
         inputElement.classList.add(this._errorClass);
         this._errorElement.textContent = errorMessage;
     }
     
-    _hideInputError(errorElement, inputElement) {
+    _hideInputError(inputElement) {
+        this._errorElement = this._formElement.querySelector(`.${inputElement.id}-error`);
         inputElement.classList.remove(this._errorClass);
         this._errorElement.textContent = '';
     }
     
     _handleFormInput(inputElement) {
-        this._errorElement = this._formElement.querySelector(`.${inputElement.id}-error`);
         if (!inputElement.validity.valid) {
-            this._showInputError(this._errorElement, inputElement, inputElement.validationMessage);
+            this._showInputError(inputElement, inputElement.validationMessage);
         } else {
-            this._hideInputError(this._errorElement, inputElement);
+            this._hideInputError(inputElement);
         };
     }
     
-    _hasValidInput(inputList) {
-        return inputList.some((inputElement) => {
+    _hasValidInput() {
+        return this._inputList.some((inputElement) => {
             return !inputElement.validity.valid;
         });
     }
     
     _toggleButtonElement() {
-        if (this._hasValidInput(this._inputList)) {
+        if (this._hasValidInput()) {
             this._buttonElement.classList.add(this._inactiveButtonClass);
             this._buttonElement.disabled = true;
         } else {
@@ -45,6 +46,15 @@ export class FormValidator {
             this._buttonElement.disabled = false;
         };
     }
+
+    resetValidation() {
+        this._toggleButtonElement();
+  
+        this._inputList.forEach((inputElement) => {
+          this._hideInputError(inputElement)
+        });
+  
+      } 
     
     _setEventListeners() {
         this._toggleButtonElement();

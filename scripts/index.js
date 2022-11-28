@@ -2,7 +2,6 @@ import {Card} from './Card.js';
 import {FormValidator} from './FormValidator.js';
 import {options, initialCards} from '../constants/constants.js';
 
-const popupAll = document.querySelector(".popup");
 const modalEditOpen = document.querySelector(".profile__edit-button");
 const popupProfile = document.querySelector(".popup_profile");
 const popupCloseBtnProfile = popupProfile.querySelector(".popup__close");
@@ -38,8 +37,8 @@ cardAddFormValidator.enableValidation();
 
 const handleEscKeyDown = (e) => {
   if (e.key === 'Escape') {
-    const openPopupWindowe = document.querySelector('.popup_opened');
-    closeGeneralPopup(openPopupWindowe);
+    const buttonOpenPopupWindowe = document.querySelector('.popup_opened');
+    closeGeneralPopup(buttonOpenPopupWindowe);
   }
 };
 
@@ -60,7 +59,7 @@ function openGeneralPopup(popup) {
 function closeGeneralPopup(popup) {
     popup.classList.remove("popup_opened");
 
-    popup.addEventListener('mousedown', handleOverlayClose);
+    popup.removeEventListener('mousedown', handleOverlayClose);
 
     document.removeEventListener('keydown', handleEscKeyDown);
 };
@@ -73,19 +72,19 @@ function handleProfileFormSubmit (evt) {
 };
 
 // project 2
+function openZoomImg(сardLink, сardName) {
+  popupElementImage.src = сardLink;
+  popupElementImage.alt = сardName;
 
-function deleteCard (e) {
-  e.target.closest('.element').remove();
-};
+  popupElementCaption.textContent = сardName;
 
-function toggleLikeCard(evt) {
-  evt.target.classList.toggle('element__like-button_active');
+  openGeneralPopup(popupZoomImage);
 };
 
 const addElement = (elementCard) => {
-  const card = new Card(elementCard, elementTempale);
+  const card = new Card(elementCard, '#element-template', openZoomImg);
   const cardElement = card.renderCard();
-
+  // не понимаю где вызвать resetValidation
   return cardElement;
   };
 
@@ -93,26 +92,23 @@ initialCards.forEach((elementCard) => {
   elementsContainer.append(addElement(elementCard));
 });
 
-// добавление карточек
 function addNewElement(evt) {
     evt.preventDefault();
 
-    const newPlaceName = placeNameAddCard.value;
-    const newPlaceUrl = placeUrlAddCard.value;
-
-    const newAddElement = addElement({name: newPlaceName, link: newPlaceUrl});
+    const newAddElement = addElement({
+      name: placeNameAddCard.value,
+      link: placeUrlAddCard.value
+    });
 
     elementsContainer.prepend(newAddElement); 
 
-    placeNameAddCard.value = '';
-    placeUrlAddCard.value = '';
+    evt.target.reset();
     closeGeneralPopup(popupAddCard);
 };
 
 function addTextProfile() { 
   nameInput.value = nameOut.textContent;
   jobInput.value = jobOut.textContent;
-  // openGeneralPopup(popup)
   }
 
 modalEditOpen.addEventListener('click',() => {
@@ -124,7 +120,6 @@ popupForm.addEventListener('submit', handleProfileFormSubmit);
 formSubmitAddCard.addEventListener('submit', addNewElement);
 popupOpenAddCard.addEventListener('click', () => {
   popupSaveButton.classList.add('popup__save_disable');
-  popupSaveButton.disabled = true;
   openGeneralPopup(popupAddCard);
 });
 popupCloseAddCard.addEventListener('click', () => closeGeneralPopup(popupAddCard));
