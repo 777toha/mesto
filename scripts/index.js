@@ -37,8 +37,8 @@ cardAddFormValidator.enableValidation();
 
 const handleEscKeyDown = (e) => {
   if (e.key === 'Escape') {
-    const buttonOpenPopupWindowe = document.querySelector('.popup_opened');
-    closeGeneralPopup(buttonOpenPopupWindowe);
+    const openedPopup = document.querySelector('.popup_opened');
+    closeGeneralPopup(openedPopup);
   }
 };
 
@@ -114,12 +114,13 @@ function addTextProfile() {
 modalEditOpen.addEventListener('click',() => {
   addTextProfile();
   openGeneralPopup(popupProfile);
+  profileFormValidator.resetValidation();
 });
 popupCloseBtnProfile.addEventListener('click', () => closeGeneralPopup(popupProfile));
 popupForm.addEventListener('submit', handleProfileFormSubmit);
 formSubmitAddCard.addEventListener('submit', addNewElement);
 popupOpenAddCard.addEventListener('click', () => {
-  popupSaveButton.classList.add('popup__save_disable');
+  cardAddFormValidator.resetValidation();
   openGeneralPopup(popupAddCard);
 });
 popupCloseAddCard.addEventListener('click', () => closeGeneralPopup(popupAddCard));

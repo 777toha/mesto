@@ -29,10 +29,6 @@ export class Card {
         return this._cardTemplate
     }
 
-    _handleZoomImage() {
-        this._openZoomImg(this._link, this._name);
-    }
-
     _clickLike() {
         this._buttonLike.classList.toggle('element__like-button_active');
     }
@@ -50,7 +46,7 @@ export class Card {
             this._clickTrash();
         });
         this._cardImage.addEventListener('click', () => {
-            this._handleZoomImage();
+            this._openZoomImg(this._link, this._name);
         });
     }
 }
