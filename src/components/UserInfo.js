@@ -2,6 +2,7 @@ export default class UserInfo {
     constructor(userSelector) {
         this._name = document.querySelector(userSelector.name);
         this._job = document.querySelector(userSelector.job);
+        this._avatarProfile = document.querySelector(userSelector.avatar);
     }
 
     getUserInfo() {
@@ -13,5 +14,10 @@ export default class UserInfo {
     setUserInfo(formValue) {
         this._name.textContent = formValue.nameValue;
         this._job.textContent = formValue.jobValue;
+        this.handleAvatarUser(formValue);
+    }
+
+    handleAvatarUser(formValue) {
+        this._avatarProfile.style.backgroundImage = `url(${formValue.avatar})`;
     }
 }

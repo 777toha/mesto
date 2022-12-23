@@ -2,6 +2,7 @@ export default class Popup {
     constructor(popupSelector) {
         this._popupElement = document.querySelector(popupSelector);
         this._handleEscClose = this._handleEscClose.bind(this);
+        this._popupButton = this._popupElement.querySelector('.popup__save');
     }
 
     open() {
@@ -23,6 +24,14 @@ export default class Popup {
     _handleOverlayClose(e) {
         if (e.target.classList.contains('popup')) {
             this.close();
+        }
+    }
+
+    loading(isLoading) {
+        if(isLoading) {
+            this._popupButton.textContent = 'Сохранение...'
+        } else {
+            this._popupButton.textContent = 'Сохранить'
         }
     }
 
