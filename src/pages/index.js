@@ -61,7 +61,7 @@ const createCard = (elementCard) => {
       )
     },
     handleLikeClick: (likes) => {
-      if(likes) {
+      if(!likes) {
         api.getLikes(elementCard._id).then((data) => {
           card.updateLikes(data)
         }).catch(err => {
