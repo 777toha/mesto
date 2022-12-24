@@ -48,7 +48,7 @@ const openZoomImg = (сardLink, сardName) => {
 };
 
 const createCard = (elementCard) => {
-  const card = new Card(elementCard, '#element-template', openZoomImg, userId, api,
+  const card = new Card(elementCard, '#element-template', openZoomImg, userId,
   {handleConfirmDelete: () => {
     popupWithConfirm.open();
     popupWithConfirm.setHandleSubmit(() => 
@@ -60,8 +60,22 @@ const createCard = (elementCard) => {
           console.log(err)})
       )
     },
-  }
-  );
+    handleLikeClick: (likes) => {
+      if(likes) {
+        api.getLikes(elementCard._id).then((data) => {
+          card.updateLikes(data)
+        }).catch(err => {
+          console.log(err);
+        })
+      } else {
+        api.deleteLikes(elementCard._id).then((data) => {
+          card.updateLikes(data)
+        }).catch(err => {
+          console.log(err);
+        })
+      }
+    }
+  });
   const cardElement = card.renderCard();
   return cardElement;
   };
@@ -72,11 +86,11 @@ const cardElementSection = new Section({
   }
 }, '.elements');
 
-api.getCards().then((cards) => {
-  cardElementSection.renderItems(cards.reverse());
-})
-.catch((err) => {
-  console.log(err)});
+// api.getCards().then((cards) => {
+//   cardElementSection.renderItems(cards.reverse());
+// })
+// .catch((err) => {
+//   console.log(err)});
 
 const popupCardWithForm = new PopupWithForm('.popup_card-add', 
 {handleFormSubmit: (data) => {
@@ -116,18 +130,16 @@ const userInfo = new UserInfo({name: ".profile__title",
                               job: ".profile__subtitle",
                               avatar: ".profile__avatar"});
 
-let userId;
-
-api.getInfo().then((userData) => {
-  userInfo.setUserInfo({
-    nameValue: userData.name,
-    jobValue: userData.about,
-    avatar: userData.avatar
-    });
-  userId = userData._id;
-})
-.catch((err) => {
-  console.log(err)});
+// api.getInfo().then((userData) => {
+//   userInfo.setUserInfo({
+//     nameValue: userData.name,
+//     jobValue: userData.about,
+//     avatar: userData.avatar
+//     });
+//   userId = userData._id;
+// })
+// .catch((err) => {
+//   console.log(err)});
 
 const popupProfileWithForm = new PopupWithForm('.popup_profile', 
 {handleFormSubmit: (userData) => {
@@ -167,3 +179,30 @@ popupAvatarOpenButton.addEventListener('click', () => {
   profileAvatarValidator.resetValidation();
   popupAvatarProfile.open();
 })
+
+let userId;
+
+Promise.all([
+
+  api.getInfo().then((userData) => {
+  userInfo.setUserInfo({
+    nameValue: userData.name,
+    jobValue: userData.about,
+    avatar: userData.avatar
+    });
+  userId = userData._id;
+}),
+
+  api.getCards().then((cards) => {
+    cardElementSection.renderItems(cards.reverse());
+  })
+
+])
+
+.then((values)=>{ 
+
+})
+
+.catch((err)=>{
+    console.log(err);
+});

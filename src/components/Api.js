@@ -87,4 +87,14 @@ export default class Api {
         })
         .then(this._checkError);
     }
+    
+    getPromiseAll() {
+       return Promise.all([
+
+        this.getInfo(),
+
+        this.getCards()
+
+    ]);
+    }
 }
