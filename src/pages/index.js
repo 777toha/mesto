@@ -184,23 +184,20 @@ let userId;
 
 Promise.all([
 
-  api.getInfo().then((userData) => {
+  api.getCards(),
+
+  api.getInfo()
+
+])
+
+.then(( [cards, userData] ) => { 
   userInfo.setUserInfo({
     nameValue: userData.name,
     jobValue: userData.about,
     avatar: userData.avatar
     });
   userId = userData._id;
-}),
-
-  api.getCards().then((cards) => {
-    cardElementSection.renderItems(cards.reverse());
-  })
-
-])
-
-.then((values)=>{ 
-
+  cardElementSection.renderItems(cards.reverse());
 })
 
 .catch((err)=>{

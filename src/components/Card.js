@@ -60,15 +60,14 @@ export class Card {
     //     this._buttonLike.classList.toggle('element__like-button_active');
     // }
 
-    // clickTrash() {
-    //     this._cardTemplate.remove();
-    // }
+    clickTrash() {
+        this._cardTemplate.remove();
+    }
 
     _setEventListener() {
         this._buttonLike.addEventListener('click', () => {
             // this._clickLike();
             this._handleLikeClick(this.isLiked());
-            console.log(this.isLiked());
         });
 
         this._buttonTrash.addEventListener('click', () => {
